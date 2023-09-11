@@ -2,9 +2,13 @@
  import { conn } from "@/libs/mysql";
 
  export async function GET(){
-   const response = await conn.query('SELECT * FROM products');
-   console.log(response)
-    return NextResponse.json(response);
+  try {
+    const response = await conn.query('SELECT * FROM products');
+    console.log(response)
+     return new Response(JSON.stringify(response), {status: 200})
+  } catch (error) {
+    return new Response(error.sqlMessage, {status: 500})
+  }
  }
 
  
@@ -24,7 +28,7 @@ export async function POST(request){
   });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({status: 500, message: error.sqlMessage});
+    return new Response(error.sqlMessage, {status: 500})
     
   }
 }
