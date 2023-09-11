@@ -37,7 +37,7 @@ export async  function DELETE(request,{params}){
             return new Response("Product not found", {status: 404})
         }
         
-        return new Response("Product deleted", {status: 204})
+        return new Response(null, {status: 204})
     } catch (error) {
         return new Response(error.sqlMessage, {status: 500})
     }

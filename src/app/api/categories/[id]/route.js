@@ -32,12 +32,12 @@ export async function PUT(request,{params}){
 
 export async  function DELETE(request,{params}){
     try {
-        const deletedCategory = await conn.query('DELETE FROM categories WHERE id = ?',params.id);
+        const deletedCategory = await conn.query('DELETE FROM categories WHERE id = ?',[params.id]);
         if(deletedCategory.affectedRows === 0){
             return new Response("Category not found", {status: 404})
         }
         
-        return new Response("Category deleted", {status: 204})
+        return new Response(null, {status: 204})
     } catch (error) {
         return new Response(error.sqlMessage, {status: 500})
     }
