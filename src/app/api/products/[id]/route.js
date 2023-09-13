@@ -18,7 +18,7 @@ export async function GET(request,{params}){
 export async function PUT(request,{params}){
     try {
         const data = await request.json();
-        const updatedProduct = await conn.query('UPDATE products SET ?', [data,params.id]);
+        const updatedProduct = await conn.query('UPDATE products SET ? WHERE id = ?', [data,params.id]);
         if(updatedProduct.affectedRows === 0){
             return new Response("Product not found", {status: 404})
         }
