@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../form/index.jsx'
+import Form from '../../components/form/index.jsx'
 
 const NewPage = () => {
   return (

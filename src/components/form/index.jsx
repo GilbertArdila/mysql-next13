@@ -1,10 +1,12 @@
 'use client'
 import React,{useRef, useState} from 'react'
+import  {useRouter} from 'next/navigation'
 import axios from 'axios'
 
 const form = () => {
-    const [product, setProduct] = useState({name:'',price:0,description:'',image:'',category_id:1})
+    const [product, setProduct] = useState({name:'',price: 0,description:'',image:'',category_id: 1})
     const form = useRef(null)
+    const router = useRouter()
 
     const handleChange = (e) => {
         setProduct({...product,[e.target.name]:e.target.value})
@@ -14,7 +16,8 @@ const form = () => {
         e.preventDefault()
         const response = await axios.post('/api/products',product)
         form.current.reset()
-        console.log(response)
+        router.push('/')
+        
     }
         
   return (
@@ -24,7 +27,9 @@ const form = () => {
     ref={form}>
         
             <label htmlFor="name" className='block text-gray-700 text-sm font-bold mb-2'>Name</label>
-            <input type="text" className="shadow appearance-none border rounded w-full py-2 px-3 hover:border-2 hover:border-blue-500 text-black" name="name" onChange={handleChange} value={product.name} />
+            <input type="text" 
+            autoFocus
+            className="shadow appearance-none border rounded w-full py-2 px-3 hover:border-2 hover:border-blue-500 text-black" name="name" onChange={handleChange} value={product.name} />
         
         
             <label htmlFor="price" className='block text-gray-700 text-sm font-bold mb-2'>Price</label>
