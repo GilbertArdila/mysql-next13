@@ -13,7 +13,7 @@ const Button = ({productId,color,message,action}) => {
         .catch(err => {
           alert(err)
         })
-        router.push('/products')
+        router.push('/')
         router.refresh()
       }
     }
