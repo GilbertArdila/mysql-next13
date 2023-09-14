@@ -10,7 +10,7 @@ const nextConfig = {
         ]
     },
     images: {
-        domains: ['static.vecteezy.com'],
+        domains: ['static.vecteezy.com','res.cloudinary.com'],
     },
 }
 

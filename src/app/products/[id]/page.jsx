@@ -1,4 +1,5 @@
 import axios from "axios";
+import Image from "next/image";
 
 
 import Button from "@/components/button";
@@ -17,15 +18,16 @@ async function Item({ params }) {
 
     return (
 
-        <section className="flex justify-center item-center">
+        <section className="flex justify-center item-center w-full h-full mt-10 ">
             <div className="flex flex-col bg-white rounded-lg border-gray-800 mb-3 p-6 text-black">
                 <h1 className="text-2xl font-bold ">{product.name}</h1>
                 <p >Name: {product.description}</p>
                 <p className="text-lg text-slate-600">{product.description}</p>
                 <p >$ {product.price}</p>
                 <p>Category: {product.category_id}</p>
+                <Image src={product.image} alt={product.name} width={'200'} height={'200'} className="w-full h-80 object-fit mb-3 border-2 border-blue-500 rounded-lg" />
                 <Button productId={product.id} color="red" message="delete" action={'delete'}/>
-                <Button productId={product.id} color="yellow" message="edit" action={'edit'} />
+                <Button productId={product.id} color="blue" message="edit" action={'edit'} />
             </div>
             </section>
     )

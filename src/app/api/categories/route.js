@@ -3,7 +3,6 @@ import { conn } from "@/libs/mysql";
 
 export async function GET(){
     const response = await conn.query('SELECT * FROM categories');
-    console.log(response)
      return NextResponse.json(response);
     }
 
@@ -11,7 +10,7 @@ export async function POST(request){
     try {
         const {name,description} = await request.json();
     const newCategory = await conn.query('INSERT INTO categories SET ?', {name,description});
-    console.log(newCategory);
+    
     return NextResponse.json({
         status: 200,
         id:newCategory.insertId,
