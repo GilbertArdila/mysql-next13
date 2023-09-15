@@ -6,7 +6,7 @@ import Image from "next/image";
 import Button from "@/components/button";
 
 async function fetchProduct(id) {
-    const { data } = await axios.get(`http://localhost:3000/api/products/${id}`);
+    const { data } = await axios.get(`${process.env.BASE_URL}/api/products/${id}`);
     return data;
 }
 

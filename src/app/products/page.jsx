@@ -2,7 +2,7 @@ import axios from "axios"
 import Card from "@/components/card";
 
 async function fetchProducts  ()  {
-  const {data} = await axios.get('http://localhost:3000/api/products');
+  const {data} = await axios.get(`${process.env.BASE_URL}/api/products`);
     return data;
 }
 
