@@ -2,6 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 
 
+
 import Button from "@/components/button";
 
 async function fetchProduct(id) {

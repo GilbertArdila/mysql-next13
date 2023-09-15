@@ -1,9 +1,13 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { Suspense } from 'react'
+
 
 import Navbar from '@/components/navbar'
 import Loading from './loading.js'
-import { Suspense } from 'react'
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,13 +19,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className} >
-        <Navbar />
-        <Suspense fallback={<Loading/>} > 
-         <div className={'container mx-auto '}>{children}</div>
-         </Suspense>
-       
+      <UserProvider>
+        <body className={inter.className} >
+          <Navbar />
+            
+          <Suspense fallback={<Loading />} >
+            <div className={'container mx-auto '}>{children}</div>
+          </Suspense>
+
         </body>
+      </UserProvider>
     </html>
   )
 }
