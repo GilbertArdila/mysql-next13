@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import axios from 'axios'
 
+import Button from '../button'
+
 const form = () => {
   const [product, setProduct] = useState({ name: '', price: 0, description: '', category_id: 1 })
   //state to show the right button depending on the action
@@ -103,8 +105,8 @@ const form = () => {
         <option value={3}>Category 3</option>
       </select>
 
-
-      <button className="bg-blue-500  hover:bg-blue-700 text-white font-bold w-1/2 mt-6 py-2 px-4 rounded">{isUpdatable ? 'Update' : 'Create'}</button>
+      <Button color='primary' message={isUpdatable ? 'Update' : 'Create'} action={false} />
+      
       {file && (
         <img
           className='w-72 md:w-96 mt-6 py-2 px-4 rounded mx-auto'

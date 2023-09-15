@@ -26,8 +26,8 @@ async function Item({ params }) {
                 <p >$ {product.price}</p>
                 <p>Category: {product.category_id}</p>
                 <Image src={product.image} alt={product.name} width={'200'} height={'200'} className="w-full h-80 object-fit mb-3 border-2 border-blue-500 rounded-lg" />
-                <Button productId={product.id} color="red" message="delete" action={'delete'}/>
-                <Button productId={product.id} color="blue" message="edit" action={'edit'} />
+                <Button productId={product.id} color="danger" message="delete" action={'delete'}/>
+                <Button productId={product.id} color="warning" message="edit" action={'edit'} />
             </div>
             </section>
     )
