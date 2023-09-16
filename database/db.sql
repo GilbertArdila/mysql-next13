@@ -14,3 +14,6 @@ CREATE TABLE products (
   category_id INT NOT NULL,
   PRIMARY KEY (id)
 );
+
+ALTER TABLE products
+ADD cloudinary_id TEXT;
