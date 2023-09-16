@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { conn } from "@/libs/mysql";
-import { writeFile, unlink } from "fs/promises";
-import path from "path";
 import cloudinary from "@/libs/cloudinary";
 
 export async function GET() {
@@ -39,7 +37,7 @@ export async function POST(request) {
         })
         .end(buffer);
     });
-    console.log(response);
+   
     // saving data into database
     const res = await conn.query("INSERT INTO products SET ?", {
       name: data.get("name"),
@@ -55,7 +53,7 @@ export async function POST(request) {
       message: "Producto creado exitosamente",
     });
   } catch (error) {
-    console.log(error);
+    
     return new Response(error.sqlMessage, { status: 500 });
   }
 }

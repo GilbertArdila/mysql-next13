@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { conn } from "@/libs/mysql";
-import { writeFile, unlink } from "fs/promises";
-import path from "path";
 import cloudinary from "@/libs/cloudinary";
 
 export async function GET(request, { params }) {
